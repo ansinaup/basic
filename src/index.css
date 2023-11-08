@@ -1,0 +1,8 @@
+.div{
+  display: flex;
+ align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 300px;
+  gap:20px;
+}
