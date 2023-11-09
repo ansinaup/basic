@@ -1,23 +1,29 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { AppContext } from "./App"
 
-function Home (props){
+function Home (){
 
-const increment=()=> props.increment()
-const decrement=()=> props.decrement()
-const reset=()=> props.reset()
+    const value=useContext(AppContext)
+
+    console.log(value,'value');
+
+const increment=()=> value.increment()
+const decrement=()=> value.decrement()
+const reset=()=> value.reset()
 // const bgChange=()=>props.bgChange()
 const input=(e)=>{
- props.input(e.target.value)
+ value.input(e.target.value)
 }
 
  
 
     return(
-     <>
-     <div className="div" style={{background:props.color}} >
+        <>
+     <div style={{background:value.color, height:'100vh', width:'100%'}}>
+     <div className="div" style={{background:value.color}} >
     <button onClick={increment} >+</button>
-    <h1>{props.state}</h1>
-    {props.state===0 ?
+    <h1>{value.state}</h1>
+    {value.state===0 ?
     <button disabled onClick={decrement}>-</button> :
     <button onClick={decrement}>-</button>
 
@@ -28,6 +34,7 @@ const input=(e)=>{
      <input onChange={input} type="text"></input>
     </div>
    
+    </div>
     </>
     )
 }
